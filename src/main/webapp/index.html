@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Register & Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(3px);
+    }
+    header {
+      font-size: 26px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #007bff, #28a745);
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #218838, #17a2b8);
+    }
+    .form-container {
+      display: none;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      margin: 25px auto;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+      max-width: 400px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    h3 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #333;
+    }
+    input {
+      width: 95%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border 0.3s;
+    }
+    input:focus {
+      border: 1px solid #007bff;
+      box-shadow: 0 0 6px rgba(0,123,255,0.5);
+    }
+    button[type="submit"] {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #007bff, #6610f2);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(135deg, #0056b3, #520dc2);
+      transform: scale(1.03);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+<header>🚗 Car Rental Management</header>
+ 
+  <div class="container">
+    <button class="btn" onclick="showForm('registerForm')">Register Car</button>
+    
+    <form action="seeallavaialblecars">
+      <button type="submit" class="btn">See All Available Cars</button>
+    </form>
+    
+    <form action="carbooked">
+      <button type="submit" class="btn">Booked Cars</button>
+    </form>
+  </div>
+
+  <!-- Car Register Form -->
+  <div id="registerForm" class="form-container">
+    <h3>Register Car</h3>
+    <form action="carregister" method="POST">
+      <label for="carid">Car ID</label>
+      <input type="text" id="carid" name="carid" placeholder="Enter Car ID" required>
+
+      <label for="carname">Car Name</label>
+      <input type="text" id="carname" name="carname" placeholder="Enter Car Name" required>
+
+      <label for="carmodel">Car Model</label>
+      <input type="text" id="carmodel" name="carmodel" placeholder="Enter Car Model" required>
+
+      <label for="carnumber">Car Number</label>
+      <input type="text" id="carnumber" name="carnumber" placeholder="Enter Car Number" required>
+
+      <label for="carowner">Car Owner</label>
+      <input type="text" id="carowner" name="carowner" placeholder="Enter Car Owner" required>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+  </div>
+
+  <!-- Car Booking Form -->
+  <div id="bookForm" class="form-container">
+    <h3>Book Car</h3>
+    <form>
+      <label for="bookcarid">Car ID</label>
+      <input type="text" id="bookcarid" name="bookcarid" placeholder="Enter Car ID" required>
+
+      <label for="customer">Customer Name</label>
+      <input type="text" id="customer" name="customer" placeholder="Enter Customer Name" required>
+
+      <label for="days">Number of Days</label>
+      <input type="number" id="days" name="days" placeholder="Enter Days" required>
+
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+
+  <script>
+    function showForm(formId) {
+      document.getElementById("registerForm").style.display = "none";
+      document.getElementById("bookForm").style.display = "none";
+      document.getElementById(formId).style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
